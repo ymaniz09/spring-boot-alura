@@ -3,6 +3,7 @@ package com.github.ymaniz09.forum.model;
 import java.time.LocalDateTime;
 
 public class Answer {
+
     private Long id;
     private String message;
     private Topic topic;

@@ -1,6 +1,7 @@
 package com.github.ymaniz09.forum.model;
 
 public class User {
+
     private Long id;
     private String name;
     private String email;
