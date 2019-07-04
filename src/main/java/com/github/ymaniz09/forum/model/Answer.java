@@ -1,14 +1,25 @@
 package com.github.ymaniz09.forum.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Answer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String message;
+
+    @ManyToOne
     private Topic topic;
+
     private LocalDateTime createdDate = LocalDateTime.now();
+
+    @ManyToOne
     private User author;
+
     private Boolean resolved = false;
 
     @Override
