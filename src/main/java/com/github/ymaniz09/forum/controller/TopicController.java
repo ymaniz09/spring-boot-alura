@@ -1,22 +1,25 @@
 package com.github.ymaniz09.forum.controller;
 
 import com.github.ymaniz09.forum.controller.DTO.TopicDTO;
-import com.github.ymaniz09.forum.model.Course;
 import com.github.ymaniz09.forum.model.Topic;
+import com.github.ymaniz09.forum.repository.TopicRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
 public class TopicController {
 
+    @Autowired
+    private TopicRepository topicRepository;
+
     @RequestMapping("/topics")
     public List<TopicDTO> list() {
-        Topic topic = new Topic("Help", "Spring help!", new Course("Spring", "Programming"));
-        topic.setId(1526L);
 
-        return TopicDTO.topicToTopicDto(Arrays.asList(topic, topic, topic));
+        List<Topic> topicList = topicRepository.findAll();
+
+        return TopicDTO.topicToTopicDto(topicList);
     }
 }
